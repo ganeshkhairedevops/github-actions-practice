@@ -1,27 +1,38 @@
+# This is a basic GitHub Actions workflow that runs on every push to the repository.
+# # Name of the worflow
 name: Hello Workflow
 
+# Trigger the workflow on push events
 on:
   push:
 
+# Define the jobs to run in the workflow
 jobs:
   greet:
+    # The type of runner to use for this job
     runs-on: ubuntu-latest
 
+    # The steps to execute in this job
     steps:
+        # Checkout the repository to the runner
       - name: Checkout repository
         uses: actions/checkout@v4
 
+        # Run a series of commands to demonstrate the workflow
       - name: Print greeting
         run: echo "Hello from GitHub Actions!"
       - name: Print date and time
         run: date
 
+        # Print the branch name that triggered the workflow
       - name: Print branch name
         run: 'echo "Branch: ${{ github.ref_name }}"'
 
+        # List the files in the repository
       - name: List files
         run: ls -la
 
+        # Print the GitHub runner OS
       - name: Print runner OS
         run: 'echo "Runner OS: $RUNNER_OS"'
       
