@@ -30,3 +30,19 @@ jobs:
           echo "OS: $RUNNER_OS"
           hostname
           whoami
+
+  check-tools:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Docker version
+        run: docker --version
+
+      - name: Check Python version
+        run: python --version
+
+      - name: Check Node version
+        run: node --version
+
+      - name: Check Git version
+        run: git --version
