@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-on-self-hosted:
-    runs-on: self-hosted
+    runs-on: my-linux-runner
 
     steps:
       - name: Show hostname
