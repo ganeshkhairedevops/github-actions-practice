@@ -1,7 +1,8 @@
 name: Job Output
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 jobs:
   generate-date:

@@ -1,7 +1,8 @@
 name: Hosted Runners
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 jobs:
   ubuntu-job:

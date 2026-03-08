@@ -1,0 +1,20 @@
+name: Upload Artifact
+
+on:
+  push:
+
+jobs:
+  generate-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create report file
+        run: |
+          echo "CI Test Report" > report.txt
+          echo "Generated at $(date)" >> report.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.txt

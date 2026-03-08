@@ -4,7 +4,8 @@ name: Hello Workflow
 
 # Trigger the workflow on push events
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 # Define the jobs to run in the workflow
 jobs:
