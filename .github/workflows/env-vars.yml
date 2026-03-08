@@ -2,7 +2,8 @@ name: Environment Variables
 
 
 on:
-  push:
+  workflow_dispatch:
+  #push:
 
 env:
   APP_NAME: myapp
