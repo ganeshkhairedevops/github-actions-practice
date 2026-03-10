@@ -12,5 +12,5 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: build docker image
-        run: docker build -t my-docker-image:latest .
+        run: docker build -t my-docker-image:latest ./app
         
