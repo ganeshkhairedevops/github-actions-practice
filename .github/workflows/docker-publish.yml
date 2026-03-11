@@ -33,4 +33,4 @@ jobs:
         if: github.ref == 'refs/heads/main' # Only push on main branch
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA
+          docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:sha-$SHORT_SHA
