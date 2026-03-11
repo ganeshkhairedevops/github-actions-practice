@@ -31,6 +31,3 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA
-
-
-        
