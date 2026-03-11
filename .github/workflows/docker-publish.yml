@@ -1,9 +1,10 @@
 name: Docker Build and Push
-#check from other branch
+
 on:
   push:
     branches:
       - main
+      - "*" # Trigger on all branches to build images with commit SHA tags
 
 jobs:
   build:
@@ -22,14 +23,14 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA ./app
 
       - name: Log in to Docker Hub
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' # Only log in on main branch to push images
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Docker Image
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' # Only push on main branch
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA
