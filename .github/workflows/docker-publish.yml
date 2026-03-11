@@ -17,7 +17,7 @@ jobs:
         run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
       - name: build docker image
-        run: 
+        run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest ./app
           docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA ./app
 
@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Docker Image
-        run: 
+        run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA
 
