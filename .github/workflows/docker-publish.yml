@@ -11,8 +11,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Set short commit SHA
+        id: vars
+        run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
+
       - name: build docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest ./app
+        run: 
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest ./app
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA ./app
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -21,8 +28,9 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
-        
+        run: 
+          docker push ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA
 
 
         
