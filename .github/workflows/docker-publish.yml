@@ -20,7 +20,7 @@ jobs:
       - name: build docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-app:latest ./app
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-$SHORT_SHA ./app
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/github-action-app:sha-$SHORT_SHA ./app
 
       - name: Log in to Docker Hub
         if: github.ref == 'refs/heads/main' # Only log in on main branch to push images
