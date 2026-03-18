@@ -19,4 +19,4 @@ jobs:
           language: "en"
 
       - name: Print Output
-        run: echo 'Greeting executed: ${{ steps.greet.outputs.greeted }}'
+        run: echo "Greeting executed: ${{ steps.greet.outputs.greeted }}"
