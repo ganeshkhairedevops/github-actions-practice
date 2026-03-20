@@ -1,0 +1,16 @@
+name: Ignore Docs Changes
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+
+jobs:
+  skip-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Docs-only change skipped"
