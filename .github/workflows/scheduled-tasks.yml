@@ -12,7 +12,8 @@ jobs:
 
     steps:
       - name: Print Schedule
-        run: echo "Triggered by cron: ${{ github.event.schedule }}"
+        run: |
+          echo "Triggered by cron: ${{ github.event.schedule }}"
 
       - name: Health Check
         run: |
